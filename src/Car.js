@@ -6,6 +6,11 @@ class Car {
 	constructor(name) {
 		this.name = name;
 		this.moveCount = 0;
+		this.output = `${name} : `;
+	}
+	moveFoward() {
+		this.output += "-";
+		this.moveCount += 1;
 	}
 }
 
