@@ -8,7 +8,7 @@ class Car {
 		this.moveCount = 0;
 		this.output = `${name} : `;
 	}
-	moveFoward() {
+	moveForward() {
 		this.output += "-";
 		this.moveCount += 1;
 	}
