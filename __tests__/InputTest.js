@@ -38,7 +38,7 @@ describe("입력 테스트", () => {
 
 		// then
 		expect(app.cars.map((car) => car.name).join(",")).toBe(output[0]);
-		expect(app.count).toBe(+output[1]);
+		expect(app.tryCount).toBe(+output[1]);
 	});
 
 	test.each(ERROR_CAR_NAME_CASE)("자동차 이름 예외 케이스", (input, errorMessage) => {
