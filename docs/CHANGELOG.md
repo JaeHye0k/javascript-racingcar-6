@@ -1,3 +1,14 @@
+# 1.0.0 COMPLETE (2024-07-30)
+
+## New Features
+
+-   **race** : 하나의 자동차를 기준으로 한 회차에 수행할 기능(랜덤 숫자 추출, 앞으로 이동) 수행
+-   **getRandomNumber** : 랜덤 숫자 추출
+-   **isMoveFoward** : 앞으로 가야하는지 판단
+-   **getWinner** : 최종 우승자 추출
+-   **print** : 실행 결과 출력
+-   **outputTest** : 출력 테스트 추가
+
 # 0.2.0 VALIDATOR (2024-07-30)
 
 ## New Features
