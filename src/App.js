@@ -7,19 +7,20 @@ class App {
 	constructor() {
 		this.cars = [];
 		this.tryCount = 0;
+		this.output = "\n실행 결과\n";
 	}
 	async play() {
 		await this.input();
-		Console.print("\n실행 결과");
 		for (let i = 0; i < this.tryCount; i++) {
 			this.cars.forEach((car) => {
 				this.race(car);
-				Console.print(car.output); // 각 차의 실행 결과 출력
+				this.output += car.output + "\n";
 			});
-			Console.print(""); // 한 줄 띄우기
+			this.output += "\n"; // 한 줄 띄우기
 		}
 		const winners = this.getWinner(this.cars);
-		Console.print(`최종 우승자 : ${winners.join(", ")}`);
+		this.output += `최종 우승자 : ${winners.join(", ")}`;
+		this.print();
 	}
 
 	async input() {
@@ -30,6 +31,10 @@ class App {
 		let tryCount = await Console.readLineAsync(MESSAGES.INPUT.TRY_COUNT);
 		isValidTryCount(tryCount); // 시도할 횟수 유효성 검사
 		this.tryCount = +tryCount;
+	}
+
+	print() {
+		Console.print(this.output);
 	}
 
 	race(car) {
