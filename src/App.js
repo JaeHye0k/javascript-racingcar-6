@@ -1,5 +1,7 @@
 import Car from "./Car.js";
 import { Console, Random } from "@woowacourse/mission-utils";
+import { MESSAGES } from "./messages.js";
+import { isValidCarName, isValidTryCount } from "./validators.js";
 
 class App {
 	constructor() {
@@ -7,20 +9,17 @@ class App {
 		this.count = 0;
 	}
 	async play() {
-		this.input();
+		await this.input();
 	}
 
 	async input() {
-		let carNames = await Console.readLineAsync(
-			"경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n"
-		);
-		carNames = carNames.split(",");
-		for (const name of carNames) {
-			this.cars.push(new Car(name));
-		}
-		let tryCount = +(await Console.readLineAsync(
-			"시도할 횟수는 몇 회인가요?\n"
-		));
+		let carNames = await Console.readLineAsync(MESSAGES.INPUT.CAR_NAMES);
+		isValidCarName(carNames); // 자동차 이름 유효성 검사
+		this.cars = carNames.split(",").map((e) => new Car(e));
+
+		let tryCount = await Console.readLineAsync(MESSAGES.INPUT.TRY_COUNT);
+		isValidTryCount(tryCount); // 시도할 횟수 유효성 검사
+		this.count = +tryCount;
 	}
 }
 
