@@ -3,6 +3,18 @@ import { Console, Random } from "@woowacourse/mission-utils";
 import { MESSAGES } from "./messages.js";
 import { isValidCarName, isValidTryCount } from "./validators.js";
 
+/**
+ * @property {Car[]} cars 자동차 객체 배열
+ * @property {Number} tryCount 시도 횟수
+ * @property {String} output 실행 결과
+ * @method play 진입점
+ * @method input 사용자 입력 처리
+ * @method print 실행 결과 출력
+ * @method race 하나의 차량이 한 회차에서 수행하는 동작들을 수행하는 함수
+ * @method getRandomNumber 랜덤값 추출
+ * @method ismoveForward 정지-전진 여부 확인
+ * @method getWinner 최종 우승자 추출
+ */
 class App {
 	constructor() {
 		this.cars = [];
@@ -39,15 +51,15 @@ class App {
 
 	race(car) {
 		const num = this.getRandomNumber();
-		const moveFoward = this.isMoveFoward(num);
-		if (moveFoward) car.moveFoward();
+		const moveForward = this.ismoveForward(num);
+		if (moveForward) car.moveForward();
 	}
 
 	getRandomNumber() {
 		return Random.pickNumberInRange(0, 9);
 	}
 
-	isMoveFoward(num) {
+	ismoveForward(num) {
 		return num >= 4;
 	}
 
